@@ -1,143 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nguyen Hoang Hai Dang — Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; color: #111111; }
-    .mono { font-family: 'JetBrains Mono', monospace; }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07080B"><meta name="description" content="Nguyen Hoang Hai Dang — Edge AI, embedded systems, and the geometry in between. Student engineer at VNU-HCM High School for the Gifted.">
+<title>Hai Dang — Engineering the unseen.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="main.js"></script>
 </head>
-<body class="antialiased selection:bg-neutral-900 selection:text-white">
+<body data-spatial-hub="true">
+<svg width="0" height="0" class="shared-door-filter" aria-hidden="true"><defs><filter id="door-patina" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".78" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".45"/></feComponentTransfer></filter></defs></svg>
 
-  <!-- Header -->
-  <header class="max-w-4xl mx-auto px-6 pt-16 pb-12 border-b border-neutral-200">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div>
-        <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-2">VNU-HCM High School for the Gifted · Class 11 TinLN</p>
-        <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900">NGUYEN HOANG HAI DANG</h1>
-        <p class="mt-2 text-neutral-600 text-base md:text-lg">Edge AI, Computer Vision & Bare-Metal Embedded Systems</p>
-      </div>
-      <div class="flex flex-wrap gap-3 text-sm">
-        <a href="https://github.com/Todaii-Agnes" target="_blank" class="px-4 py-2 border border-neutral-300 rounded-md hover:border-neutral-900 transition">GitHub ↗</a>
-        <a href="mailto:student250908@ptnk.edu.vn" class="px-4 py-2 bg-neutral-900 text-white rounded-md hover:bg-neutral-700 transition">Contact</a>
-      </div>
-    </div>
-  </header>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="scene" aria-hidden="true"></canvas><div class="grain" aria-hidden="true"></div>
+<main id="main">
+<section class="hero section" id="hero">
+<header class="nav"><a class="wordmark" href="#hero" aria-label="Hai Dang home">HD<span>.</span></a><nav aria-label="Main navigation"><button type="button" class="contact-link" id="copy-email">Let's connect</button></nav></header>
+<div class="hero-copy"><p class="eyebrow">// GRADE 11 INTERDISCIPLINARY INFORMATICS @ VNU-HCM HIGH SCHOOL FOR THE GIFTED</p><h1>NGUYEN<br>HOANG HAI <span>DANG<span class="title-dot">.</span></span></h1><a class="gallery-github" href="https://github.com/Todaii-Agnes" target="_blank" rel="noopener" aria-label="GitHub: Todaii-Agnes (opens in a new tab)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8a11.3 11.3 0 0 0-3.57 22c.56.1.77-.24.77-.54v-2.1c-3.14.68-3.8-1.34-3.8-1.34-.51-1.3-1.25-1.65-1.25-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.73 1.17 1.73 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.5-.29-5.14-1.26-5.14-5.6 0-1.24.44-2.25 1.16-3.04-.12-.29-.5-1.44.11-3 0 0 .95-.3 3.11 1.16a10.8 10.8 0 0 1 5.66 0c2.16-1.46 3.1-1.16 3.1-1.16.62 1.56.24 2.71.12 3 .72.79 1.16 1.8 1.16 3.04 0 4.35-2.64 5.3-5.16 5.58.41.35.77 1.04.77 2.1v3.1c0 .3.2.65.78.54A11.3 11.3 0 0 0 12 .8Z"/></svg><span class="github-button-label">GitHub</span><span class="github-button-handle">@Todaii-Agnes</span></a></div>
+<button type="button" class="scroll-note gallery-scroll" aria-label="Scroll to the three doors"><svg class="scroll-arrow" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 4v15m-5-5 5 5 5-5"/></svg></button>
+</section>
+<div id="morph-spacer" aria-hidden="true"></div><section class="gateway-index" id="gateways" aria-label="Three doors into the archive"><div class="gateway-grid"><button class="door-trigger" type="button" data-gateway="systems" aria-label="Enter Systems" aria-haspopup="dialog" aria-controls="realm-overlay" aria-expanded="false"><span class="doorway" aria-hidden="true"><span class="door-spill"></span><span class="door-jamb"><span class="door-void"><span class="realm-glimpse"><i></i><i></i><i></i></span></span><span class="door-leaf"><span class="door-panels"><span class="door-panel"></span><span class="door-panel"></span><span class="door-panel"></span><span class="door-panel"></span></span><svg class="door-weather" viewBox="0 0 180 340" preserveAspectRatio="none" aria-hidden="true"><rect width="180" height="340" filter="url(#door-patina)" opacity=".2"/><g stroke="#d9d2ca" stroke-width=".45" opacity=".14"><path d="M9 54l12-9M30 106l18-16M140 36l17-13M155 95l13-11M7 210l19-17M83 304l17-14M136 256l21-18M42 173l12-10M111 74l18-14M19 312l10-8M154 319l14-13M93 214l11-8"/></g><path d="M1 7v32m0 201v41M178 21v19m0 266v19M15 1h17m96 0h12M11 338h23m97 0h21" stroke="#e1d9cb" stroke-width=".7" opacity=".2"/></svg><span class="door-lockplate"><span class="door-knob"></span><span class="door-keyhole"></span></span><span class="door-hinge hinge-top"></span><span class="door-hinge hinge-bottom"></span></span><span class="door-threshold"></span></span></span><span class="door-caption mono">01 // SYSTEMS</span></button><button class="door-trigger" type="button" data-gateway="foundations" aria-label="Enter Foundations" aria-haspopup="dialog" aria-controls="realm-overlay" aria-expanded="false"><span class="doorway" aria-hidden="true"><span class="door-spill"></span><span class="door-jamb"><span class="door-void"><span class="realm-glimpse"><i></i><i></i><i></i></span></span><span class="door-leaf"><span class="door-panels"><span class="door-panel"></span><span class="door-panel"></span><span class="door-panel"></span><span class="door-panel"></span></span><svg class="door-weather" viewBox="0 0 180 340" preserveAspectRatio="none" aria-hidden="true"><rect width="180" height="340" filter="url(#door-patina)" opacity=".2"/><g stroke="#d9d2ca" stroke-width=".45" opacity=".14"><path d="M9 54l12-9M30 106l18-16M140 36l17-13M155 95l13-11M7 210l19-17M83 304l17-14M136 256l21-18M42 173l12-10M111 74l18-14M19 312l10-8M154 319l14-13M93 214l11-8"/></g><path d="M1 7v32m0 201v41M178 21v19m0 266v19M15 1h17m96 0h12M11 338h23m97 0h21" stroke="#e1d9cb" stroke-width=".7" opacity=".2"/></svg><span class="door-lockplate"><span class="door-knob"></span><span class="door-keyhole"></span></span><span class="door-hinge hinge-top"></span><span class="door-hinge hinge-bottom"></span></span><span class="door-threshold"></span></span></span><span class="door-caption mono">02 // FOUNDATIONS</span></button><button class="door-trigger" type="button" data-gateway="beyond" aria-label="Enter Beyond" aria-haspopup="dialog" aria-controls="realm-overlay" aria-expanded="false"><span class="doorway" aria-hidden="true"><span class="door-spill"></span><span class="door-jamb"><span class="door-void"><span class="realm-glimpse"><i></i><i></i><i></i></span></span><span class="door-leaf"><span class="door-panels"><span class="door-panel"></span><span class="door-panel"></span><span class="door-panel"></span><span class="door-panel"></span></span><svg class="door-weather" viewBox="0 0 180 340" preserveAspectRatio="none" aria-hidden="true"><rect width="180" height="340" filter="url(#door-patina)" opacity=".2"/><g stroke="#d9d2ca" stroke-width=".45" opacity=".14"><path d="M9 54l12-9M30 106l18-16M140 36l17-13M155 95l13-11M7 210l19-17M83 304l17-14M136 256l21-18M42 173l12-10M111 74l18-14M19 312l10-8M154 319l14-13M93 214l11-8"/></g><path d="M1 7v32m0 201v41M178 21v19m0 266v19M15 1h17m96 0h12M11 338h23m97 0h21" stroke="#e1d9cb" stroke-width=".7" opacity=".2"/></svg><span class="door-lockplate"><span class="door-knob"></span><span class="door-keyhole"></span></span><span class="door-hinge hinge-top"></span><span class="door-hinge hinge-bottom"></span></span><span class="door-threshold"></span></span></span><span class="door-caption mono">03 // BEYOND</span></button></div><span id="year" hidden>2026</span></section>
+<noscript><p class="hub-noscript">Enable JavaScript to enter the three portfolio gateways. Contact: <a href="mailto:student250908@ptnk.edu.vn">student250908@ptnk.edu.vn</a>.</p></noscript>
+</main>
+<dialog id="realm-overlay" aria-labelledby="workspace-title"><div class="workspace-top"><button type="button" id="return-core" class="mono">[ &lt;- EXIT REALM ]</button><div class="workspace-tabs" role="tablist" aria-label="Spatial views"><button type="button" role="tab" id="tab-systems" data-spatial-tab="systems" aria-controls="engineering" aria-selected="true">01 // SYSTEMS</button><button type="button" role="tab" id="tab-foundations" data-spatial-tab="foundations" aria-controls="foundations" aria-selected="false" tabindex="-1">02 // FOUNDATIONS</button><button type="button" role="tab" id="tab-beyond" data-spatial-tab="beyond" aria-controls="beyond" aria-selected="false" tabindex="-1">03 // BEYOND</button></div><span id="workspace-title" class="sr-only">Systems &amp; Research spatial view</span></div><div class="workspace-scroll"><div class="workspace-stage"><section class="section engineering editorial-archive" id="engineering" role="tabpanel" aria-labelledby="tab-systems">
+<div class="archive-heading"><p class="eyebrow">01 // SYSTEMS &amp; RESEARCH</p><span class="archive-coordinate mono">10.7626&deg; N &nbsp; / &nbsp; 106.6822&deg; E</span><h2 id="archive-title">Teaching silicon<br><em>to perceive space.</em></h2><p class="chapter-preface">At the quiet boundary between registers and perception.</p><span class="viewfinder-cross" aria-hidden="true">+</span></div>
+<div class="archive-toolbar"><p class="mono archive-index">A LIVING RECORD / <span id="archive-count">04 CHAPTERS</span></p><div class="archive-filters" role="group" aria-label="Filter engineering chapters"><button type="button" data-category="All" aria-pressed="true">[ All ]</button><button type="button" data-category="Edge AI &amp; Vision" aria-pressed="false">[ Edge AI &amp; Vision ]</button><button type="button" data-category="Bare-Metal &amp; Hardware" aria-pressed="false">[ Bare-Metal &amp; Hardware ]</button></div></div>
+<p class="sr-only" id="archive-status" role="status" aria-live="polite"></p>
+<div class="timeline archive-list" id="archive-chapters"><div class="track" aria-hidden="true"><div class="track-fill"></div></div></div>
+<noscript><p>The Second Sight: wearable Edge AI. Spatial Perception Research: HCMUT Control &amp; Vision Lab. Silicon &amp; Bare-Metal Registers: STM32F411E and KiCad. Foundations &amp; International Track: PTNK and HKU Alliance. Enable JavaScript to explore the complete archive.</p></noscript>
+<div class="archive-end mono"><span aria-hidden="true">+ &nbsp; x x x</span><span>THE RECORD REMAINS OPEN.</span><span>MORE SIGNALS TO COME</span></div>
+</section>
+<section class="section foundations-view" id="foundations" role="tabpanel" aria-labelledby="tab-foundations" hidden>
+<header class="curator-strip"><figure class="curator-portrait"><div class="portrait-coordinate-plate" aria-hidden="true"><span class="portrait-registration">+</span><span class="mono">10.7626&deg; N<br>&middot;<br>106.6822&deg; E</span><span class="portrait-frame-tick"></span></div><img src="./assets/personal_img.png" alt="Nguyen Hoang Hai Dang" decoding="async" onerror="this.hidden=true;this.parentElement.classList.add('portrait-missing')"><figcaption class="sr-only">Nguyen Hoang Hai Dang &mdash; curator identification portrait</figcaption></figure><div class="curator-identity"><p class="monograph-kicker mono">02 // FOUNDATIONS &nbsp; / &nbsp; PERSONAL ARCHIVE</p><h2 id="foundations-title">Nguyen Hoang Hai Dang</h2><p class="curator-subtitle">Grade 11 Interdisciplinary Informatics (11 Tin-LN)<br class="curator-break"> &middot; VNU-HCM High School for the Gifted (PTNK)</p><p class="curator-metadata mono"><span>BORN 30.01.2010</span><span>HO CHI MINH CITY, VN</span><span>TRACK: COMPUTER ENGINEERING</span></p></div></header>
+<div class="archival-index"><table class="academic-index-table"><caption><span>Academic trajectory</span><span class="mono">INDEX / 2025 &mdash; PRESENT</span></caption><colgroup><col class="index-year-col"><col class="index-role-col"><col class="index-record-col"></colgroup><thead><tr><th scope="col">YEAR</th><th scope="col">MILESTONE &amp; ROLE</th><th scope="col">INSTITUTION / RECORD</th></tr></thead><tbody id="foundations-index-rows"></tbody></table></div><section class="foundations-capabilities" aria-labelledby="capabilities-title"><div class="capabilities-heading"><h3 id="capabilities-title">Core Capabilities</h3><span class="mono">PRACTICE / TOOLKIT</span></div><div class="capabilities-grid"><article class="capability-card"><h4 class="mono">01 / LANGUAGES</h4><ul><li>C++</li><li>Python</li><li>Bare-metal C</li><li>Java</li></ul></article><article class="capability-card"><h4 class="mono">02 / AI &amp; VISION</h4><ul><li>OpenCV</li><li>NumPy</li><li>PyTorch</li><li>YOLOv26n</li><li>ML/DL Fundamentals <span>(CNNs, Calculus I, Linear Algebra)</span></li></ul></article><article class="capability-card"><h4 class="mono">03 / EMBEDDED</h4><ul><li>STM32 <span>(Register-level)</span></li><li>Raspberry Pi 5</li><li>ToF LiDAR</li></ul></article><article class="capability-card"><h4 class="mono">04 / CAD, EDA &amp; TOOLS</h4><ul><li>SOLIDWORKS <span>(3D Modeling)</span></li><li>KiCad <span>(Schematic &amp; PCB)</span></li><li>Linux</li><li>Git</li></ul></article></div></section><p class="monograph-colophon mono"><span>A RECORD IN PROGRESS.</span><span aria-hidden="true">+ &nbsp; x x x</span></p>
+</section><section class="section beyond editorial-collage" id="beyond" role="tabpanel" aria-labelledby="tab-beyond" hidden>
+<div class="collage-heading"><p class="eyebrow">03 // BEYOND THE TERMINAL</p><h2 id="beyond-title">Elsewhere,<br><em>the same curiosity.</em></h2><p class="chapter-preface">A life measured in light, frequency, and motion.</p></div>
+<div class="film-collage">
+<article class="film-frame street-frame"><span class="frame-cross" aria-hidden="true">+</span><div class="film-meta mono"><span>01 / OBSERVATIONS</span><span>APPLE PRORAW</span></div><div class="street-photos"><button class="photo photo-one" data-caption="Urban light and shadow" aria-label="View street geometry study"><img src="./assets/photo-1.jpg" alt="Urban light and shadow study" onerror="this.hidden=true;this.parentElement.classList.add('missing')"><span class="photo-art" aria-hidden="true"></span><span class="photo-label mono">LIGHT / 001</span></button><button class="photo photo-three" data-caption="Shadow and negative space" aria-label="View shadow study"><img src="./assets/photo-3.jpg" alt="Minimalist shadow study" onerror="this.hidden=true;this.parentElement.classList.add('missing')"><span class="photo-art" aria-hidden="true"></span><span class="photo-label mono">SHADOW / 002</span></button></div><h3>Minimalist Street Geometry</h3><p class="film-poem">The city, between two shadows.</p><p>Urban light &amp; shadow studies captured in Apple ProRAW.<br><span class="mono film-device">iPhone 16 Pro Max</span></p></article>
+<article class="film-frame acoustics-frame"><span class="frame-cross" aria-hidden="true">+</span><div class="film-meta mono"><span>02 / FREQUENCIES</span><span>LOSSLESS</span></div><div class="acoustic-orbit" aria-hidden="true"><div class="equalizer"></div><span class="mono">20 Hz &mdash; 20 kHz</span></div><h3>Personal Acoustics</h3><p class="film-poem">A small universe, held in the ear.</p><p>Lossless FLAC playback &amp; IEM frequency tuning.</p><p class="mono film-device">KZ Castor Pro 2 Harman / Moondrop Chu 2 / JCally JM7 MAX</p></article>
+<article class="film-frame kinetic-frame"><span class="frame-cross" aria-hidden="true">+</span><div class="film-meta mono"><span>03 / MOVEMENT</span><span>REPEAT / REFINE</span></div><svg class="footwork" viewBox="0 0 350 150" fill="none" aria-hidden="true"><ellipse cx="175" cy="75" rx="145" ry="50" stroke="currentColor" stroke-dasharray="3 7"/><path d="M75 105l62-66 63 65 67-67M117 75h119" stroke="currentColor" stroke-width=".8"/><g stroke="currentColor"><circle cx="75" cy="105" r="8"/><circle cx="137" cy="39" r="8"/><circle cx="200" cy="104" r="8"/><circle cx="267" cy="37" r="8"/></g><path d="M170 65v20m-10-10h30" stroke="currentColor"/></svg><h3>Kinetic Discipline</h3><p class="film-poem">Find the rhythm. Return to center.</p><p>Boxing footwork &amp; gym conditioning.</p></article>
+<span class="collage-registration mono" aria-hidden="true">x x x &nbsp; / &nbsp; OFF THE CLOCK, STILL OBSERVING.</span>
+</div></section>
+<section class="section arsenal" id="arsenal"><div class="arsenal-heading"><p class="eyebrow">04 // TECHNICAL ARSENAL</p><h2>The tools behind the thinking.</h2></div><div class="skill-matrix"><div><span class="mono skill-icon">{ }</span><h3>Languages</h3><p>C++<br>Python<br>Bare-metal C<br>Java</p></div><div><span class="mono skill-icon">⌘</span><h3>AI & Vision</h3><p>PyTorch · OpenCV<br>NumPy · YOLOv26n<br>Linear Algebra<br>& Calculus</p></div><div><span class="mono skill-icon">▦</span><h3>Embedded & Hardware</h3><p>STM32 (Register-level)<br>Raspberry Pi 5<br>ToF LiDAR<br>KiCad (PCB)</p></div><div><span class="mono skill-icon">⌁</span><h3>Mechanical & Tools</h3><p>SOLIDWORKS (3D CAD)<br>Linux<br>Git</p></div></div></section>
+</div><footer class="workspace-contact" id="workspace-contact"><span class="mono">A CONVERSATION IS ANOTHER BEGINNING.</span><a href="mailto:student250908@ptnk.edu.vn">student250908@ptnk.edu.vn</a><a href="https://github.com/Todaii-Agnes" target="_blank" rel="noopener noreferrer">GitHub / @Todaii-Agnes</a><span class="mono">HO CHI MINH CITY, VIETNAM</span></footer></div></dialog>
+<dialog id="lightbox" aria-label="Photography viewer"><button class="lightbox-close" aria-label="Close photography viewer">×</button><div class="lightbox-content"></div><p class="mono lightbox-caption"></p></dialog>
+<dialog id="detail-drawer" aria-labelledby="drawer-title"><div class="drawer-top mono"><span>ARCHIVE / TELEMETRY</span><button type="button" id="drawer-close" aria-label="Close telemetry drawer">ESC &nbsp; [ X ]</button></div><div id="drawer-content"></div></dialog>
+<template id="schematic-vision"><svg viewBox="0 0 440 230" role="img" aria-label="EDGE PERCEPTION / SCHEMATIC" xmlns="http://www.w3.org/2000/svg"><g class="telemetry-lines"><g class="telemetry-muted"><path d="M246 56v119M246 56h119"/><path d="M263 56v119M246 73h119"/><path d="M280 56v119M246 90h119"/><path d="M297 56v119M246 107h119"/><path d="M314 56v119M246 124h119"/><path d="M331 56v119M246 141h119"/><path d="M348 56v119M246 158h119"/><path d="M365 56v119M246 175h119"/></g><path d="M26 81l14-19h136l19 19M39 85h61v47q-28 20-53-2zM120 85h61l-8 45q-25 21-53 2zM100 94q10-13 20 0M40 85L18 68M180 85l24-17"/><circle cx="110" cy="113" r="56" class="telemetry-muted"/><path d="M110 48v14m0 102v14M45 113h14m102 0h14"/><rect class="telemetry-pulse" x="259" y="70" width="56" height="75" rx="2"/><path class="telemetry-flow" d="M194 113h32l20-26h20"/><circle class="telemetry-pulse" cx="287" cy="107" r="5"/><text x="247" y="39">8&#215;8 ToF LiDAR</text><text x="248" y="199">YOLOv26n-seg</text><text x="30" y="199">TACTILE + AUDIO</text><path class="telemetry-muted" d="M257 159h80M257 166h47"/></g></svg></template>
+<template id="schematic-radar"><svg viewBox="0 0 440 230" role="img" aria-label="SPATIAL PERCEPTION / SCHEMATIC" xmlns="http://www.w3.org/2000/svg"><g class="telemetry-lines"><g class="telemetry-muted"><path d="M35 170L168 62M35 170h370"/><path d="M72 170L180 62M72 170h333"/><path d="M109 170L192 62M109 170h296"/><path d="M146 170L204 62M146 170h259"/><path d="M183 170L216 62M183 170h222"/><path d="M220 170L228 62M220 170h185"/><path d="M257 170L240 62M257 170h148"/><path d="M294 170L252 62M294 170h111"/><path d="M331 170L264 62M331 170h74"/><path d="M368 170L276 62M368 170h37"/></g><path d="M35 170V58l133-31h156l81 31v112M168 27v108M324 27v109" class="telemetry-muted"/><path d="M199 155v-40l33-16 28 14v42l-29 15zM199 115l32 14 29-16M231 129v41"/><g class="telemetry-radar"><path d="M84 160a90 90 0 0 1 180 0M104 160a70 70 0 0 1 140 0M124 160a50 50 0 0 1 100 0"/></g><path class="telemetry-flow" d="M173 160l62-65"/><circle class="telemetry-pulse" cx="235" cy="95" r="5"/><text x="34" y="211">INDOOR DEPTH / OBSTACLE DETECTION</text></g></svg></template>
+<template id="schematic-trajectory"><svg viewBox="0 0 440 230" role="img" aria-label="SENSOR FUSION / CONCEPT SCHEMATIC" xmlns="http://www.w3.org/2000/svg"><g class="telemetry-lines"><path class="telemetry-muted" d="M30 173h375M62 194V30M62 173l276-96"/><path d="M62 173C94 173 89 111 148 123S202 175 249 111 314 106 370 47" class="telemetry-flow trajectory"/><g class="telemetry-muted"><path d="M148 123l52-60 49 48 59 41 62-105M200 63l108 89M249 111l-28 75"/></g><g class="telemetry-nodes"><circle cx="62" cy="173" r="5"/><circle cx="148" cy="123" r="6"/><circle cx="200" cy="63" r="5"/><circle cx="249" cy="111" r="7"/><circle cx="308" cy="152" r="5"/><circle cx="370" cy="47" r="6"/></g><circle class="telemetry-pulse" cx="249" cy="111" r="16"/><text x="26" y="218">TRAJECTORY / KINEMATIC NODE GRAPH</text></g></svg></template>
+<template id="schematic-silicon"><svg viewBox="0 0 440 230" role="img" aria-label="BARE-METAL / BUS TELEMETRY" xmlns="http://www.w3.org/2000/svg"><g class="telemetry-lines"><g><path d="M168 64V48M168 152v16M151 80h-17M275 80h17"/><path d="M183 64V48M183 152v16M151 93h-17M275 93h17"/><path d="M198 64V48M198 152v16M151 106h-17M275 106h17"/><path d="M213 64V48M213 152v16M151 119h-17M275 119h17"/><path d="M228 64V48M228 152v16M151 132h-17M275 132h17"/><path d="M243 64V48M243 152v16M151 145h-17M275 145h17"/><path d="M258 64V48M258 152v16M151 158h-17M275 158h17"/></g><rect x="151" y="64" width="124" height="88" rx="4"/><rect class="telemetry-muted" x="161" y="74" width="104" height="68" rx="2"/><text x="179" y="109">STM32F4</text><text x="185" y="128">LQFP</text><path d="M134 93H89V45H32M134 119H67v59H28M292 93h46V45h70M292 119h31v58h84M183 168v25h-63M244 48V28h70" class="telemetry-muted"/><path d="M32 45h57v48h45M292 119h31v58h84M120 193h63v-25" class="telemetry-flow"/><circle class="telemetry-pulse" cx="89" cy="93" r="4"/><circle class="telemetry-pulse" cx="323" cy="177" r="4"/><text x="28" y="29">DMA</text><text x="354" y="200">I2C / UART</text></g></svg></template>
+<div id="email-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+</body></html>
 
-  <main class="max-w-4xl mx-auto px-6 py-12 space-y-20">
-
-    <!-- 01 / Engineering & Research Timeline -->
-    <section>
-      <h2 class="mono text-xs uppercase tracking-widest text-neutral-400 mb-8">01 / Engineering & Research Timeline</h2>
-      <div class="relative border-l border-neutral-300 ml-3 space-y-12">
-
-        <!-- Item 1 -->
-        <div class="pl-8 relative">
-          <span class="w-2.5 h-2.5 bg-neutral-900 rounded-full absolute -left-[5.5px] top-1.5"></span>
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="text-lg font-semibold text-neutral-900">"The Second Sight" — Wearable AI Navigation</h3>
-            <span class="mono text-xs text-neutral-500">2026 · PIISE Division A Finalist</span>
-          </div>
-          <p class="text-sm text-neutral-500 mt-0.5">Founder & Team Leader · Team Penguin_Of_Madagascar</p>
-          <p class="mt-3 text-sm text-neutral-700 leading-relaxed">
-            Engineered an edge-AI assistive smart-glasses prototype running <span class="mono text-xs bg-neutral-200/70 px-1.5 py-0.5 rounded">YOLOv26n-seg</span> on Raspberry Pi 5, fused with an 8x8 ToF LiDAR sensor and tactile/audio feedback for visually impaired users. Designed custom 3D-printed enclosures in SOLIDWORKS.
-          </p>
-          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="aspect-video bg-neutral-100 border border-dashed border-neutral-300 rounded-lg flex items-center justify-center text-xs mono text-neutral-400">
-              [Prototype Photo / Hardware Setup]
-            </div>
-            <div class="aspect-video bg-neutral-100 border border-dashed border-neutral-300 rounded-lg flex items-center justify-center text-xs mono text-neutral-400">
-              [SOLIDWORKS CAD / Segmentation Output]
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="pl-8 relative">
-          <span class="w-2.5 h-2.5 bg-neutral-400 rounded-full absolute -left-[5.5px] top-1.5"></span>
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="text-lg font-semibold text-neutral-900">AI Vision & Indoor Obstacle Perception Lab</h3>
-            <span class="mono text-xs text-neutral-500">2026</span>
-          </div>
-          <p class="text-sm text-neutral-500 mt-0.5">Team Leader · Dept. of Automatic Control, HCMUT (Advisor: Dr. Pham Viet Cuong)</p>
-          <p class="mt-3 text-sm text-neutral-700 leading-relaxed">
-            Researched indoor computer vision systems for real-time obstacle detection and spatial awareness. This foundational research directly informed the architecture of "The Second Sight".
-          </p>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="pl-8 relative">
-          <span class="w-2.5 h-2.5 bg-neutral-400 rounded-full absolute -left-[5.5px] top-1.5"></span>
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="text-lg font-semibold text-neutral-900">Bare-Metal STM32 Firmware Development</h3>
-            <span class="mono text-xs text-neutral-500">2025 – 2026</span>
-          </div>
-          <p class="text-sm text-neutral-500 mt-0.5">Embedded Firmware Trainee · IMIC Technology (Grade: 8.0/10 — Certified)</p>
-          <p class="mt-3 text-sm text-neutral-700 leading-relaxed">
-            Completed intensive training in register-level bare-metal C programming on STM32 microcontrollers (DMA, interrupts, memory mapping) alongside classical computer vision in C++/OpenCV.
-          </p>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="pl-8 relative">
-          <span class="w-2.5 h-2.5 bg-neutral-400 rounded-full absolute -left-[5.5px] top-1.5"></span>
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="text-lg font-semibold text-neutral-900">Class Monitor — Class 11 TinLN</h3>
-            <span class="mono text-xs text-neutral-500">2026 – Present</span>
-          </div>
-          <p class="text-sm text-neutral-500 mt-0.5">VNU-HCM High School for the Gifted (PTNK)</p>
-          <p class="mt-3 text-sm text-neutral-700 leading-relaxed">
-            Coordinate academic schedules, elective tracking, and official communication across homeroom faculty, students, and parents.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 02 / Technical Stack -->
-    <section>
-      <h2 class="mono text-xs uppercase tracking-widest text-neutral-400 mb-6">02 / Technical Stack</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-        <div class="p-4 bg-white border border-neutral-200 rounded-lg">
-          <p class="font-semibold text-neutral-900 mb-1">Languages</p>
-          <p class="text-neutral-600">C++, Python, Bare-metal C, Java</p>
-        </div>
-        <div class="p-4 bg-white border border-neutral-200 rounded-lg">
-          <p class="font-semibold text-neutral-900 mb-1">AI & Computer Vision</p>
-          <p class="text-neutral-600">OpenCV, NumPy, PyTorch, YOLOv26n, ML/DL & CNN Fundamentals</p>
-        </div>
-        <div class="p-4 bg-white border border-neutral-200 rounded-lg">
-          <p class="font-semibold text-neutral-900 mb-1">Embedded & Hardware</p>
-          <p class="text-neutral-600">STM32 (Register-level), Raspberry Pi 5, ToF LiDAR</p>
-        </div>
-        <div class="p-4 bg-white border border-neutral-200 rounded-lg">
-          <p class="font-semibold text-neutral-900 mb-1">CAD, EDA & Tools</p>
-          <p class="text-neutral-600">SOLIDWORKS, KiCad, Linux, Git</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 / Visual Archive -->
-    <section>
-      <h2 class="mono text-xs uppercase tracking-widest text-neutral-400 mb-6">03 / Visual Archive — Street & Minimalist Photography</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="aspect-[4/3] bg-neutral-100 border border-dashed border-neutral-300 rounded-lg flex items-center justify-center text-xs mono text-neutral-400">[RAW Frame 01]</div>
-        <div class="aspect-[4/3] bg-neutral-100 border border-dashed border-neutral-300 rounded-lg flex items-center justify-center text-xs mono text-neutral-400">[RAW Frame 02]</div>
-        <div class="aspect-[4/3] bg-neutral-100 border border-dashed border-neutral-300 rounded-lg flex items-center justify-center text-xs mono text-neutral-400">[RAW Frame 03]</div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="max-w-4xl mx-auto px-6 py-10 border-t border-neutral-200 text-xs mono text-neutral-400 flex justify-between">
-    <span>© 2026 Nguyen Hoang Hai Dang</span>
-    <span>Ho Chi Minh City, Vietnam</span>
-  </footer>
-
-</body>
-</html>
